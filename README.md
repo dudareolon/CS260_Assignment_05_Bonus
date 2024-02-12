@@ -12,9 +12,9 @@ Design: There will be 3 files in my program
 2- array_list.cpp:
 
 3-testing: This is the testing file, and these were the tests that I performed:
-    test_autosort_list_constructor();
-    test_autosort_list_search_empty();
-    test_autosort_list_insert_first_node();
+- test_autosort_list_constructor();
+- test_autosort_list_search_empty();
+- test_autosort_list_insert_first_node();
     test_autosort_list_insert_second_node();
     test_autosort_list_search_correct_value();
     test_autosort_list_search_wrong_value();
