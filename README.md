@@ -9,7 +9,18 @@ Design: There will be 3 files in my program
 
 1- array_list.h: This file says what an array list will be for this program. An array is simply a one dimensional vector. For this class list, an empty list will be defined on private and the functions insert, search, and to_string will be defined on public. 
 
-2- array_list.cpp:
+2- array_list.cpp: this file will define the 3 functions that I will use on this program, the functions are:
+
+- insert(): iterate through all values of the list until value inserted is smaller than the value stored in the current index of the iteration. Store value in the index location. If you use insert function it will already shift the numbers to the right of the index one spot to the right.
+
+- to_String(): iterates thhough all index values of the array putting them all in order inside one single string. It is pretty much same function as linked list. The only difference is that during the iteration the index is incremneted before adding the number in the array to the string, while on the linked list code the index was incremented after adding the number to the string. That is because with arrays the program is able to directly access any index, while with linked lists the program needs the previous node next pointer to access it.
+
+- search(): this function searches and returns an exact value from the list. With the linked-list we had to traverse the entire list in the search for this value. With the array I will be using binary search to make this program faster. Binary search is a method in which the searched value it only compared to the value on the middle of the list, instead of to all elements of the list. If the value you are searching for is not the middle value of the list, at least you are able to know if it is higher or lower than then middle value. You adjust your boundaries accordngly, the left boundary changes to middle + 1 if you know the value is higher than middle, or the right boundary changes to middle - 1 if the value is lower than the middle. Then a witht the new left and right boundaries another middle is defined, this new middle value is compared to the value we are searchign for, if again they do not match, then the left and right boundaries change accordingly. And this loop continues until there are only one,two, or three values in the list. See a visual representation of binary search on the figure below:
+
+![image](https://github.com/dudareolon/CS260_Assignment_05_Bonus/assets/102680672/2586d03b-cc62-438e-8df9-8ab824aabd3a)
+
+
+
 
 3-testing: This is the testing file, and these were the tests that I performed:
 - test_autosort_list_constructor();
