@@ -52,3 +52,14 @@ Requirements:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Complexity Analysis:
+
+- Insert: This function has a while loop that searched for the correct index to insert the value. In the best scenario, after the first time the while loop runs we would already have the correct index, and that would be O(1) notation, but that is not the case most of the times. So for this function I would consider it O(n) notation being n the aount of elements in the array.
+
+- Search: At first I thought this function was O(n) because of the one while loop it has, but I was not sure because of all the if statemnets so I searched on the internet and then I asked ChatGPT what he thought. I came to the conclusion this function fits in the O(log n) notation for its eworst case scenario. That is becuase each time the while loop runs, it not only restarts the lines, but it also halves the search space, being that the worst case scenario is when the list is halved to the point it has 1 or 2 elements. For very long lists, this logarithmic behavior is expetional as it makes the program much simpler and much faster.
+
+Here is the graph visual of these big O notations:
+
+![image](https://github.com/dudareolon/CS260_Assignment_05_Bonus/assets/102680672/860c7def-1137-422d-aef9-703f7c0c34ac)
+
+See how O(log n) is much less steep and more desirable behavior than O(n).
+
