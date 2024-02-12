@@ -48,27 +48,30 @@ void list::insert(int value) {
 // this function turns the array list into a string that includes the data of all the nodes of the list in the sequence they are located in the list
 string list::to_string() {
 
+    // string stream allows you to modify a string
     std::stringstream result_string_stream;
-    int size = array_list.size();
+    int size = array_list.size(); //size of array
 
-    if (size==0){
+    if (size==0){ // check if list is empty
         result_string_stream << "[empty list]";
     } else {
-        result_string_stream << "[";
+        result_string_stream << "["; // beginning of string stream
         int i = 0;
-        while (i<size){
+        while (i<size){ // repeat until the end of the array
             result_string_stream << array_list[i];
-            i++;
+            i++; // on linked list index had to be incremented after adding ", " characters
+                 // that is because the only way of accessing the next node on a linked list is with the previous node
+                 // this is not the case for an array since we can directly access indexes
             if (i<size){
-                result_string_stream << ", ";
+                result_string_stream << ", "; // put in between characters
             }
 
         }
-        result_string_stream << "]";
+        result_string_stream << "]"; // end of string stream
 
     }
 
-    return result_string_stream.str();
+    return result_string_stream.str(); // turn string stream into a string so it can be returned
 
 }
 
