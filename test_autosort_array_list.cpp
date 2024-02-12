@@ -9,61 +9,60 @@ using std::cout;
 using std::endl;
 using std::string;
 
-// void test_autosort_list_search_empty(){
-//     list my_list;    
-//     int expected_result = -1;
-//     int actual_result = my_list.search(3);
+void test_autosort_list_search_empty(){
+    list my_list;    
+    int expected_result = -1;
+    int actual_result = my_list.search(3);
 
-//     cout << "expected_result: \"" << expected_result << "\"" << endl;
-//     cout << "actual_result: \"" << actual_result << "\"" << endl; 
-//     cout << endl;
+    cout << "expected_result: \"" << expected_result << "\"" << endl;
+    cout << "actual_result: \"" << actual_result << "\"" << endl; 
+    cout << endl;
 
-// }
+}
 
-// void test_autosort_list_constructor() {
-//     list my_list;
+void test_autosort_list_constructor() {
+    list my_list;
 
-//     string expected_result = "[empty list]";
+   string expected_result = "[empty list]";
 
-//     string actual_result = my_list.to_string();
+    string actual_result = my_list.to_string();
 
-//     cout << "expected_result: \"" << expected_result << "\"" << endl;
-//     cout << "actual_result: \"" << actual_result << "\"" << endl;
-//     cout << "expected_result.compare(actual_result): " << expected_result.compare(actual_result) << endl;
-//     cout << endl;
+    cout << "expected_result: \"" << expected_result << "\"" << endl;
+    cout << "actual_result: \"" << actual_result << "\"" << endl;
+    cout << "expected_result.compare(actual_result): " << expected_result.compare(actual_result) << endl;
+    cout << endl;
 
-//     assert(expected_result.compare(actual_result) == 0);
-// }
+    assert(expected_result.compare(actual_result) == 0);
+}
 
-// void test_autosort_list_search_correct_value(){
-//     list my_list;
+void test_autosort_list_search_correct_value(){
+    list my_list;
 
-//     my_list.insert(1);
-//     my_list.insert(2);
+    my_list.insert(1);
+    my_list.insert(2);
 
-//     int expected_result = 2;
-//     int actual_result = my_list.search(2);
+    int expected_result = 2;
+    int actual_result = my_list.search(2);
 
-//     cout << "expected_result: \"" << expected_result << "\"" << endl;
-//     cout << "actual_result: \"" << actual_result << "\"" << endl; 
-//     cout << endl;
+    cout << "expected_result: \"" << expected_result << "\"" << endl;
+    cout << "actual_result: \"" << actual_result << "\"" << endl; 
+    cout << endl;
 
-// }
+}
 
-// void test_autosort_list_search_wrong_value(){
-//     list my_list;
-
-//     my_list.insert(1);
-//     my_list.insert(2);
+void test_autosort_list_search_wrong_value(){
+    list my_list;
+    my_list.insert(1);
+    my_list.insert(2);
     
-//     int expected_result = -1;
-//     int actual_result = my_list.search(3);
+    int expected_result = -1;
+    int actual_result = my_list.search(3);
 
-//     cout << "expected_result: \"" << expected_result << "\"" << endl;
-//     cout << "actual_result: \"" << actual_result << "\"" << endl; 
-//     cout << endl;
+    cout << "expected_result: \"" << expected_result << "\"" << endl;
+    cout << "actual_result: \"" << actual_result << "\"" << endl; 
+    cout << endl;
 
-// }
+}
 
 void test_autosort_list_insert_first_node() {
     list my_list;
@@ -102,14 +101,45 @@ void test_autosort_list_insert_second_node() {
 
 
 // after end of list
-void test_autosort_list_insert_node_after_end() {
+void test_autosort_list_insert_odd() {
     list my_list;
     // insert some nodes
-    string expected_result = "[1, 2, 6]";
+    string expected_result = "[1, 1, 2, 5, 6, 8, 12, 17, 24]";
 
-    my_list.insert(1);
     my_list.insert(2);
+    my_list.insert(17);
+    my_list.insert(12);
+    my_list.insert(24);
     my_list.insert(6);
+    my_list.insert(5);
+    my_list.insert(1);
+    my_list.insert(1);
+    my_list.insert(8);
+    
+    string actual_result = my_list.to_string();
+
+    cout << "expected_result: \"" << expected_result << "\"" << endl;
+    cout << "actual_result: \"" << actual_result << "\"" << endl;
+    cout << "expected_result.compare(actual_result): " << expected_result.compare(actual_result) << endl;   
+    cout << endl; 
+
+    assert(expected_result == actual_result);
+}
+
+// after end of list
+void test_autosort_list_insert_even() {
+    list my_list;
+    // insert some nodes
+    string expected_result = "[1, 1, 2, 5, 6, 8, 12, 17]";
+
+    my_list.insert(2);
+    my_list.insert(17);
+    my_list.insert(12);
+    my_list.insert(6);
+    my_list.insert(5);
+    my_list.insert(1);
+    my_list.insert(1);
+    my_list.insert(8);
     
     string actual_result = my_list.to_string();
 
@@ -179,13 +209,14 @@ void test_autosort_list_insert_node_in_middle_of_list() {
 
 int main() {
 
-    //test_autosort_list_constructor();
-    //test_autosort_list_search_empty();
+    test_autosort_list_constructor();
+    test_autosort_list_search_empty();
     test_autosort_list_insert_first_node();
     test_autosort_list_insert_second_node();
-    //test_autosort_list_search_correct_value();
-    //test_autosort_list_search_wrong_value();
-    test_autosort_list_insert_node_after_end();
+    test_autosort_list_search_correct_value();
+    test_autosort_list_search_wrong_value();
+    test_autosort_list_insert_odd();
+    test_autosort_list_insert_even();
     test_autosort_list_insert_node_with_same_value_as_head();
     test_autosort_list_insert_node_before_head();
     test_autosort_list_insert_node_in_middle_of_list();

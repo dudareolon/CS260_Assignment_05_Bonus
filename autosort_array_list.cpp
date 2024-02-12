@@ -11,7 +11,12 @@ using std::endl;
 using std::string;
 using std::advance;
 
-// this function inserts the value in the linked list in ascending value
+// initialize list class 
+list::list(){
+    //empty list
+}
+
+// this function inserts the value in the array list in ascending order
 void list::insert(int value) {
 
     // it is important to note that arrays start at the index 0 and not at 1
@@ -40,58 +45,71 @@ void list::insert(int value) {
     array_list.insert(index_pointer, value); // insert value in the iterator position
 }
 
-// this function turns the linked list into a string that includes the data of all the nodes of the list in the sequence they are located in the list
-// string list::to_string() {
+// this function turns the array list into a string that includes the data of all the nodes of the list in the sequence they are located in the list
+string list::to_string() {
 
-//     // stringstream is a stream class defined in the sstream included on the beginning of this file
-//     // strings only store data but with stringstreams the programmer has the ability to manipulate the data in the string
-//     std::stringstream result_string_stream;
+    std::stringstream result_string_stream;
+    int size = array_list.size();
 
-//     // check if the list is empty
-//     if(head == nullptr){ //if head is the last node of the list, last node points to nullptr
-//         result_string_stream << "[empty list]";
-//     } else {
-        
-//         // start the iteration at the head/beginning of the list
-//         node *iteration_pointer = head;
+    if (size==0){
+        result_string_stream << "[empty list]";
+    } else {
+        result_string_stream << "[";
+        int i = 0;
+        while (i<size){
+            result_string_stream << array_list[i];
+            i++;
+            if (i<size){
+                result_string_stream << ", ";
+            }
 
-//         result_string_stream << "["; // springstreams allow you to add different values to the string variable and compose it on multiple code lines
-//         while (iteration_pointer != nullptr) { // until it reaches the end of the list
-//             result_string_stream << iteration_pointer->data; // more data is added to the string
-//             if(iteration_pointer->next != nullptr) { // if iteration reaches end of list then it would not need the comma
-//                 result_string_stream << ", ";
-//             }
-//             iteration_pointer = iteration_pointer->next; // equivalent to ++i
-//         }
-//         result_string_stream << "]";
-//     }
+        }
+        result_string_stream << "]";
 
-//     // str() is a function of the stringstream class that turns the stringstream into a normal string of the ones we are used to working
-//     // C++ is not capable of returning a stringstream
-//     return result_string_stream.str();
-// }
+    }
+
+    return result_string_stream.str();
+
+}
 
 
-// // this function searches for a specific value in the list
-// // you can't do binary search with linked lists so I had to a more costly option which is to traverse the entire list in the search of the value
-// int list::search(int value){
+// this function searches for a specific value in the list using binary search
+// binary search is to cut a sorted list in half, identify if your number is higher or lower than the middle number
+// then cut the half you chose in half again, compare your value to the middle value, and keep repeating until you find the value you are looking for
+// Binary search takes less time, money, and power than iterating through all values of the list 
+int list::search(int value){
+    
+    int size = array_list.size();
+    // check if empty
+    if (size==0){
+        cout << "It was not possible to find the value you entered because the list is empty" << endl;
+        return -1;
+    } else {
+        // for the binary search you need to know the initial left boundary and the initial right boundary
+        int left_boundary = 0;
+        int right_boundary = size-1; // indexes start at 0 but the size start counting at 1 so they are one number off
 
-//     // check if the list is empty
-//     if(head == nullptr){ //if head is the last node of the list, last node points to nullptr
-//         cout << "the value you searched is not in the list because the list is empty" << endl;
-//         return -1;
-//     } else {
-//         node *iteration_pointer = head; 
+        if (left_boundary==right_boundary){
+            if (array_list[left_boundary]==value){
+                return value;
+            } else {
+                cout << "The number " << value << "is not in the list" << endl;
+                return -1;
+        }
+        } else {
+            while (left_boundary<=right_boundary){
+                int middle= left_boundary + (right_boundary) / 2;
+                if (array_list[middle] == value) {
+                    return value; // Element found
+                } else if (array_list[middle] < value) {
+                    left_boundary = middle + 1;
+                } else {
+                    right_boundary = middle - 1;
+                }
+            }
+        }
 
-//         while (iteration_pointer != nullptr) { // runs the iteration until nullptr is pointing to nullptr, in other words until it passes the last node
-//             if (iteration_pointer->data == value){
-//                 return value; // exit the function with the value
-//             }
-//             iteration_pointer = iteration_pointer->next;
-//         }
-        
-//         // if program got to this lines it means the value was not the data of any of the nodes so it was not on the list or it was an invalid number
-//         cout << "The number " << value << " is not in the list" << endl ; 
-//         return -1; 
-//     }
-// }
+        cout << "The number " << value << " is not in the list" << endl ; 
+        return -1; 
+    }
+}
