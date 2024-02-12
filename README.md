@@ -23,3 +23,21 @@ Design: There will be 3 files in my program
 - test_autosort_list_insert_node_with_same_value_as_head();
 - test_autosort_list_insert_node_before_head();
 - test_autosort_list_insert_node_in_middle_of_list();
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Requirements:
+
+1- automatically inserts values in the correct position based on some order of sorting (perhaps ascending integers or lexicographical sorting of words):
+
+![image](https://github.com/dudareolon/CS260_Assignment_05_Bonus/assets/102680672/9432cc21-2a2a-475f-a1e4-d096a6569041)
+
+
+2- efficiently searches for elements (likely binary search for the array list, but what about the linked-list?):
+
+![image](https://github.com/dudareolon/CS260_Assignment_05_Bonus/assets/102680672/f9118813-cbf6-44dd-a7d2-e2629f674452)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Complexity Analysis:
