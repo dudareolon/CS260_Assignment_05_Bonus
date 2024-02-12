@@ -92,26 +92,34 @@ int list::search(int value){
         int left_boundary = 0;
         int right_boundary = size-1; // indexes start at 0 but the size start counting at 1 so they are one number off
 
-        if (left_boundary==right_boundary){
-            if (array_list[left_boundary]==value){
-                return value;
+        if (left_boundary==right_boundary){ // if there is only one element in the list
+            if (array_list[left_boundary]==value){ // if that one element is equal to the searched value
+                return value; // return the value
             } else {
                 cout << "The number " << value << "is not in the list" << endl;
                 return -1;
         }
-        } else {
+        } else { // for arrays that size is bigger than 1
+            // BINARY SEARCH:
+            // repeats until left boundary is smaller (in case of odd array) or equal (in case of even array) to the right boundary
             while (left_boundary<=right_boundary){
                 int middle= left_boundary + (right_boundary) / 2;
-                if (array_list[middle] == value) {
-                    return value; // Element found
-                } else if (array_list[middle] < value) {
+                // middle is the average value in between the boundaries
+                if (array_list[middle] == value) { // best case scenario
+                    return value; // Return the value
+                } 
+                // If the value is to the right of middle than left boundary will become middle +1
+                // If the value is to the left of middle than right boundary will become middle -1
+                // this cuts the size of the array in half each time you run the while loop
+                else if (array_list[middle] < value) {
                     left_boundary = middle + 1;
                 } else {
                     right_boundary = middle - 1;
                 }
+                // then restart the while loop, reset middle and compare middle to value
             }
         }
-
+        // In case value is never found
         cout << "The number " << value << " is not in the list" << endl ; 
         return -1; 
     }
